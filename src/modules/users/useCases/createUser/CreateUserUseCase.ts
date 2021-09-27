@@ -12,7 +12,7 @@ class CreateUserUseCase {
   execute({ email, name }: IRequest): User {
     const isEmailAlreadyTaken = this.usersRepository.findByEmail(email);
     if (isEmailAlreadyTaken) {
-      throw new Error("The informed email is already taken!");
+      throw new Error("EmailAlreadyTaken");
     }
 
     const user = this.usersRepository.create({ name, email });
